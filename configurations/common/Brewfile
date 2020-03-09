@@ -1,0 +1,77 @@
+# frozen_string_literal: true
+
+# Process with `brew bundle --file='Brewfile'` || `brew bundle --global`
+
+################################################################################
+# Setup
+################################################################################
+hostname = `hostname -s`.strip
+cask_args appdir: '/Applications'
+tap 'homebrew/bundle'
+tap 'homebrew/cask'
+tap 'homebrew/core'
+
+################################################################################
+# T O O L S
+################################################################################
+brew 'hub'                  # Github client to send pull requests
+brew 'gist'                 #
+brew 'git'                  #
+brew 'git-lfs'              #
+brew 'diff-so-fancy'        #
+brew 'git-crypt'            #
+brew 'rbenv'                #
+brew 'yarn'                 #
+brew 'bash'                 #
+brew 'zsh'                  #
+brew 'shellcheck'           #
+brew 'node'                 #
+brew 'thefuck'              #
+brew 'jq'                   #
+brew 'zplug'                #
+brew 'zsh'                  #
+brew 'vim'                  #
+brew 'mysql'                #
+brew 'mysql-client'         #
+brew 'openapi-generator'    #
+brew 'openssl@1.1'          #
+brew 'mas'                  # Mac App Store CLI #TODO sign in to mac app store
+brew 'docfx'                #
+brew 'docker', link: false  #
+################################################################################
+# A P P S
+################################################################################
+cask 'alfred'               #
+cask 'google-chrome'        #
+cask 'iterm2'               #
+cask 'vlc'                  #
+cask 'visual-studio-code'   #
+cask 'docker'               #
+cask 'atom'                 #
+cask 'github'               #
+cask 'insomnia'             #
+cask 'java'                 #
+cask 'licecap'              # Record GIF screen captures
+cask 'microsoft-teams'      #
+cask 'postman'              #
+cask 'vagrant'              #
+cask 'virtualbox'           #
+cask 'graphiql'             #
+cask 'gpg-suite'            #
+################################################################################
+# F U N
+################################################################################
+cask 'brookyln'             # Screensaver
+brew 'cowsay'               #
+brew 'fortune'              #
+################################################################################
+
+if hostname == 'UAC00027'
+  brew 'ansible'
+  brew 'groovy'
+  brew 'dos2unix'
+  brew 'gnupg', link: false
+  cask 'gpg-suite'
+  cask 'vagrant'
+  mas 'Microsoft Remote Desktop 10', id: 1_295_203_466
+end
