@@ -12,6 +12,12 @@ tap 'homebrew/cask'
 tap 'homebrew/core'
 
 ################################################################################
+# L A N G S
+################################################################################
+brew 'ruby'                 #
+brew 'groovy'               #
+brew 'bash'                 #
+################################################################################
 # T O O L S
 ################################################################################
 brew 'git'                  #
@@ -20,7 +26,6 @@ brew 'diff-so-fancy'        #
 brew 'git-crypt'            #
 brew 'rbenv'                #
 brew 'yarn'                 #
-brew 'bash'                 #
 brew 'zsh'                  #
 brew 'shellcheck'           #
 brew 'node'                 #
@@ -67,7 +72,6 @@ brew 'fortune'              #
 
 if hostname == 'UAC00027'
   brew 'ansible'
-  brew 'groovy'
   brew 'dos2unix'
   brew 'gnupg', link: false
   cask 'gpg-suite'
