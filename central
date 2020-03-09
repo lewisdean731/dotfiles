@@ -123,7 +123,7 @@ def symlink_path(symlink)
   sudo("readlink \"#{abs(symlink)}\"")
 end
 
-def symlink(from,to,add_dot)
+def symlink(from,to)
   from = abs(from)
   to = abs(to)
   if symlink?(from)
@@ -138,13 +138,8 @@ def symlink(from,to,add_dot)
     STDERR.puts "Directory #{from} exists in place of symlink..."
     exit 1
   else
-    if add_dot
-      out = sudo("ln -s \"#{to}\" \"#{from}\"")
-      puts "Created symlink: #{from} → #{to}"
-    else
-      out = sudo("ln -s \"#{to}\" \"#{from}\"")
-      puts "Created symlink: #{from} → #{to}"
-    end
+    out = sudo("ln -s \"#{to}\" \"#{from}\"")
+    puts "Created symlink: #{from} → #{to}"
   end
 end
 
