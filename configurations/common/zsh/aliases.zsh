@@ -1,0 +1,81 @@
+################################################################################
+# M I S C
+################################################################################
+alias zshconfig="atom ~/.zshrc"
+alias HAXXX="atom ~/.zshrc"
+alias cdot="code ."
+alias aka="alias"
+alias nuke="clear; date | cowsay"
+alias haha="curl -s http://api.icndb.com/jokes/random/ | python -c 'import sys, json; print "\n\n"+json.load(sys.stdin)["value"]["joke"]+"\n\n"'"
+alias cft="rspec; rubocop -a"
+function wotityped () { history | grep "$1" }
+alias yeet="fuck"
+################################################################################
+# F O L D E R S
+################################################################################
+alias dlds="~/downloads"
+alias ptl="~/portal"
+alias site="~/site"
+alias extraHAXXX="$ZSH/custom/"
+################################################################################
+# D O C K E R
+################################################################################
+alias dc="docker-compose"
+alias db="docker build"
+alias dp="docker push"
+alias spin_portal="~/portal/dev/support/containerised-development/docker-compose.yml"
+alias spin_portal_fd="~/portal/dev/compose -f "dev/support/containerised-development/docker-compose-full-dependencies.yml" up -d portal"
+alias bash nuked="$ZSH/custom/nuke_docker.sh"
+alias bash annihalated="$ZSH/custom/annihalate_docker.sh"
+alias nukedp="docker-compose rm -f -s -v"
+alias dcupidam="$HOME/containerised-development/docker-compose up -d idam"
+alias dcuperrbit="$HOME/containerised-development/docker-compose up -d errbit-db-seeder"
+alias dcupsint='~/containerised-development/docker-compose \
+  -f "docker-compose.yml" \
+  -f "docker-compose-full-dependencies.yml" \
+  up -d sint'
+alias dcupkeycloak="docker-compose up -d keycloak-nginx"
+################################################################################
+# P O R T A L
+################################################################################
+alias ds="dev/server.sh"
+alias dsfd="dev/compose -f "dev/support/containerised-development/docker-compose-full-dependencies.yml" up -d portal"
+alias devtest="dev/enter_test_environment.sh"
+alias fixdevtest="dev/rebuild.sh"
+alias bp="continuous_integration/build_package.sh"
+alias bds="continuous_integration/build_and_deploy_to_staging.sh"
+alias ans1="ansible-galaxy install -r requirements.yml"
+function ansp () { ansible-playbook --key-file=.keys/staging/ansible_rsa -i inventories/staging/hosts -l portal"$1" portal-servers.yml -e portal_rpm_path=/Users/ldean/portal/"$2"; }
+################################################################################
+# R A I L S
+################################################################################
+alias rs="rails s"
+alias rst="rails s --environment=test"
+alias rsd="rails s --environment=development"
+alias rsp="rails s --environment=production"
+alias dropdb="rake db:drop:all"
+alias createdb="rake db:create:all"
+alias migratedb="rake db:migrate"
+alias redodb="$ZSH/custom/redodb.sh"
+################################################################################
+# R S P E C
+################################################################################
+alias rpsec_m="rspec spec/models"
+alias rpsec_v="rspec spec/views"
+alias rpsec_c="rspec spec/controllers"
+alias rpsec_r="rspec spec/requests"
+################################################################################
+# G I T
+################################################################################
+alias rbrm="$ZSH/custom/rebase_remote_master.sh"
+alias gpfwl="git push --force-with-lease"
+alias gpl="git pull"
+alias gplom="git pull origin master"
+alias gsu="git submodule update"
+alias gl="git log"
+alias glg="git log --graph"
+alias glga="git log --graph --all"
+################################################################################
+# B R A K E M A N
+################################################################################
+alias brakr="brakeman -o public/brakeman/report.html"
