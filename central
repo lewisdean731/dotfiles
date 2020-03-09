@@ -1,0 +1,163 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'erb'
+require 'socket'
+
+# get hostname
+def hostname
+  Socket.gethostname
+end
+
+# get operating system
+def os
+  if RUBY_PLATFORM.include?('linux')
+    'linux'
+  elsif RUBY_PLATFORM.include?('darwin')
+    'osx'
+  elsif RUBY_PLATFORM.include?('freebsd')
+    'freebsd'
+  elsif RUBY_PLATFORM.include?('solaris')
+    'solaris'
+  end
+end
+
+def pwd
+  Dir.pwd
+end
+
+def abs(path)
+  File.absolute_path(File.expand_path(path))
+end
+
+def chdir(dir)
+  Dir.chdir(abs(dir))
+end
+
+def file_exists?(path)
+  path = abs(path)
+  File.file?(path) && File.readable?(path)
+end
+
+def dir_exists?(path)
+  path = abs(path)
+  Dir.exist?(path)
+end
+
+def file_dir(path)
+  File.dirname(abs(path))
+end
+
+def run(file)
+  cwd = pwd
+  file = abs(file)
+  puts 'Running configuration: ' + file
+  file_cwd = file_dir(file)
+  chdir file_cwd
+  load file
+  chdir cwd
+end
+
+def run_if_exists(file)
+  run file if file_exists?(file)
+end
+
+def checkTool(name, check)
+  output = "#{check} 2>&1 1>/dev/null".downcase
+  if output.include?('command not found')
+    warn "#{name} not found, please install it to use central"
+    exit 1
+  end
+end
+
+def git(url, path)
+  path = abs(path)
+  if dir_exists?(path) && dir_exists?("#{path}/.git")
+    cwd = pwd
+    chdir path
+    out = 'git pull'
+    unless out.downcase.include? 'already up-to-date'
+      puts out
+      puts "Git repository pulled: #{url} → #{path}"
+    end
+    chdir cwd
+  else
+    out = "git clone #{url} \"#{path}\""
+    puts out
+    puts "Git repository cloned: #{url} → #{path}"
+  end
+end
+
+def symlink?(symlink)
+  File.symlink?(abs(symlink))
+end
+
+def sudo(command,sudo=false)
+  if sudo
+    sudo = 'sudo '
+  else
+    sudo = ''
+  end
+  command = sudo+command
+  out = `#{command} 2>&1`
+  # removing line feed
+  if out.length > 0 && out[-1].ord == 10
+    out = out[0...-1]
+  end
+  # removing carriage return
+  if out.length > 0 && out[-1].ord == 13
+    out = out[0...-1]
+  end
+  if out.downcase.end_with?('permission denied')
+    if sudo
+      STDERR.puts "Couldn't execute #{command} due to permission denied\nrun central with sudo privileges"
+      exit 1
+    else
+      out = sudo(command,true)
+    end
+  end
+  return out
+end
+
+def symlink_path(symlink)
+  sudo("readlink \"#{abs(symlink)}\"")
+end
+
+def symlink(from,to,add_dot)
+  from = abs(from)
+  to = abs(to)
+  if symlink?(from)
+    if symlink_path(from) != to
+      rm from
+      symlink from, to
+    end
+  elsif file_exists?(from)
+    STDERR.puts "File #{from} exists in place of symlink..."
+    exit 1
+  elsif dir_exists?(from)
+    STDERR.puts "Directory #{from} exists in place of symlink..."
+    exit 1
+  else
+    if add_dot
+      out = sudo("ln -s \"#{to}\" \"#{from}\"")
+      puts "Created symlink: #{from} → #{to}"
+    else
+      out = sudo("ln -s \"#{to}\" \"#{from}\"")
+      puts "Created symlink: #{from} → #{to}"
+    end
+  end
+end
+
+# check all required tools
+checkTool('file', 'file --version')
+checkTool('grep', 'grep --version')
+checkTool('ln', 'ln --version')
+checkTool('readlink', 'readlink --version')
+checkTool('git', 'git --version')
+checkTool('curl', 'curl --version')
+
+if !ARGV.empty?
+  ARGV.map { |configuration| run configuration }
+else
+  run 'configuration.rb'
+end
