@@ -1,0 +1,30 @@
+[core]
+	editor = vim
+	hooksPath = /Users/ldean/.githooks
+	excludesfile = /Users/ldean/.gitignore_global
+[user]
+	name = Lewis Dean
+	email = ldean@ukcloud.com
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	rebase = true
+[push]
+	default = simple
+[alias]
+	gco = git checkout
+	gc = git commit
+	gs = git status
+	lastcommit = log -1 HEAD
+	gbr = git branch
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/ldean/.stCommitMsg

@@ -14,8 +14,6 @@ tap 'homebrew/core'
 ################################################################################
 # T O O L S
 ################################################################################
-brew 'hub'                  # Github client to send pull requests
-brew 'gist'                 #
 brew 'git'                  #
 brew 'git-lfs'              #
 brew 'diff-so-fancy'        #
@@ -53,6 +51,7 @@ cask 'insomnia'             #
 cask 'java'                 #
 cask 'licecap'              # Record GIF screen captures
 cask 'microsoft-teams'      #
+cask 'sourcetree'           # Atlassian / Bitbucket Source Control App
 cask 'postman'              #
 cask 'vagrant'              #
 cask 'virtualbox'           #
