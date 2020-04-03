@@ -120,6 +120,9 @@ eval "$(rbenv init -)"
 
 eval $(thefuck --alias)
 
+# Ruby SSL 1.1 fix
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
 # Chuck Norris joke on new tab
 chuck | cowsay -e oO -T U
 
