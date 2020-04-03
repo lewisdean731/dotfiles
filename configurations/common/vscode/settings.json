@@ -1,0 +1,19 @@
+{
+    "ruby.rubocop.executePath": "/Users/ldean/.rbenv/shims/",
+    "explorer.confirmDelete": false,
+    "files.autoSave": "onFocusChange",
+    "editor.rulers": [
+        80
+    ],
+    "files.trimTrailingWhitespace": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "window.zoomLevel": 0,
+    "editor.renderWhitespace": "all",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "git.confirmSync": false,
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "window.nativeTabs": true,
+    "todo-tree.tree.showScanModeButton": false
+}
