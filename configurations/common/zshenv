@@ -4,3 +4,4 @@
 
 DOTFILES="$HOME/dotfiles"
 DOTFILES_ZSH="$DOTFILES/configurations/common/zsh"
+DOTFILES_GITHOOKS="$DOTFILES/configurations/common/githooks"
