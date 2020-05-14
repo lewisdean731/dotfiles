@@ -138,7 +138,7 @@ def symlink(from,to)
     STDERR.puts "Directory #{from} exists in place of symlink..."
     exit 1
   else
-    out = sudo("ln -s \"#{to}\" \"#{from}\"")
+    sudo("ln -s \"#{to}\" \"#{from}\"")
     puts "Created symlink: #{from} → #{to}"
   end
 end
