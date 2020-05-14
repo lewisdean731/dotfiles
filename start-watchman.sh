@@ -1,3 +1,3 @@
 #!/bin/bash
-watchman watch ~/projects/git-autocommit
+watchman watch ~/dotfiles
 watchman -- trigger ~/dotfiles auto-commit '*' -- ./auto-commit.sh
