@@ -32,7 +32,6 @@ brew 'node'                 #
 brew 'thefuck'              #
 brew 'jq'                   #
 brew 'zplug'                #
-brew 'zsh'                  #
 brew 'vim'                  #
 brew 'mysql'                #
 brew 'mysql-client'         #
@@ -58,10 +57,12 @@ cask 'licecap'              # Record GIF screen captures
 cask 'microsoft-teams'      #
 cask 'sourcetree'           # Atlassian / Bitbucket Source Control App
 cask 'postman'              #
-cask 'vagrant'              #
-cask 'virtualbox'           #
 cask 'graphiql'             #
 cask 'gpg-suite'            #
+################################################################################
+# Z S H
+################################################################################
+brew 'zsh'                  #
 ################################################################################
 # F U N
 ################################################################################
@@ -69,12 +70,12 @@ cask 'brookyln'             # Screensaver
 brew 'cowsay'               #
 brew 'fortune'              #
 ################################################################################
-
 if hostname == 'UAC00027'
   brew 'ansible'
   brew 'dos2unix'
   brew 'gnupg', link: false
   cask 'gpg-suite'
+  cask 'virtualbox'
   cask 'vagrant'
   mas 'Microsoft Remote Desktop 10', id: 1_295_203_466
 end
