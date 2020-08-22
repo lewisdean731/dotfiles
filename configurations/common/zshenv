@@ -2,6 +2,6 @@
 # Environment Setup
 ################################################################################
 
-DOTFILES="$HOME/dotfiles"
+DOTFILES="$HOME/github/lewisdean731/dotfiles"
 DOTFILES_ZSH="$DOTFILES/configurations/common/zsh"
 DOTFILES_GITHOOKS="$DOTFILES/configurations/common/githooks"
