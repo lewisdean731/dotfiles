@@ -63,9 +63,9 @@ cask 'gpg-suite'            #
 ################################################################################
 brew 'zsh'                                  #
 brew 'oh-my-zsh'                            #
-brew 'zsh-autosuggestions'                   #
-brew 'zsh-syntax-highlighting'             #
-brew 'romkatv/powerlevel10k/powerlevel10k' #
+brew 'zsh-autosuggestions'                  #
+brew 'zsh-syntax-highlighting'              #
+brew 'romkatv/powerlevel10k/powerlevel10k'  #
 ################################################################################
 # F U N
 ################################################################################
