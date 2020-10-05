@@ -10,6 +10,7 @@ alias haha="curl -s http://api.icndb.com/jokes/random/ | python -c 'import sys, 
 alias cft="rspec; rubocop -a"
 function wotityped () { history | grep "$1" }
 alias yeet="fuck"
+alias python=/usr/local/bin/python3
 ################################################################################
 # F O L D E R S
 ################################################################################
