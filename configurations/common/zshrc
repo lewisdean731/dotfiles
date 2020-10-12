@@ -137,3 +137,9 @@ chuck | cowsay -e oO -T U
 [[ ! -f $DOTFILES_ZSH/.p10k.zsh ]] || source $DOTFILES_ZSH/.p10k.zsh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=127'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ldean/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ldean/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ldean/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ldean/google-cloud-sdk/completion.zsh.inc'; fi
